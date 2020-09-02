@@ -1,9 +1,34 @@
-
-# Tasks list
-
-Link: [https://filipszumski.github.io/tasks-list-react/](https://filipszumski.github.io/tasks-list-react/)
-
+# TASKS LIST
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Link: https://filipszumski.github.io/tasks-list/
+
+## Description
+
+This is to do list application. It allows you to add new tasks, mark them if done and remove tasks from list.
+
+### Technologies used
+
+- HTML
+- CSS 
+- JavaScript
+- BEM
+- React
+- create-react-app
+- Webpack
+- Babel
+
+### What it does
+
+- You can add new tasks by wrinting text in input and comfirming it by clicking "Dodaj zadanie" button. After you add new tasks it automatically clears input and sets focus on input. You can't add empty content
+- You can set added task as done by clicking on green button.
+- You can remove task by clicking on red button.
+- You can mark all tasks as done by clicking on "Ukończ wszystkie" button
+- You can hide done tasks by clicking on "Ukryj ukończone button".
+
+### Sample
+
+![GIF Instruction](https://github.com/filipszumski/tasks-list/blob/master/images/instruction.gif?raw=true)
 
 ## Available Scripts
 
