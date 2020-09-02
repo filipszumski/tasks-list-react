@@ -1,0 +1,22 @@
+.section {
+    background-color: white;
+    margin: 10px 0px;
+}
+
+.section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+    border-bottom: 3px solid #eee;
+}
+
+.section__title {
+    margin: 0px;
+    font-size: 20px;
+}
+
+.section__body {
+    padding: 20px;
+}
