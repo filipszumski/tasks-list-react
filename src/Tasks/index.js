@@ -2,10 +2,10 @@ import React from "react";
 import "./style.css";
 
 const Tasks = ({ tasks, hideDoneTasks }) => (
-
     <ul className="tasks">
         {tasks.map((task) => (
-            <li className={`tasks__listItem ${task.done && hideDoneTasks ? "tasks__listItem--hidden" : ""}`}
+            <li
+                className={`tasks__listItem ${task.done && hideDoneTasks ? "tasks__listItem--hidden" : ""}`}
                 key={task.id}
             >
                 <button className="tasks__button tasks__button--done">
@@ -19,7 +19,7 @@ const Tasks = ({ tasks, hideDoneTasks }) => (
                 </button>
             </li>
         ))}
-    </ul>
-);
+    </ul >
+)
 
 export default Tasks;
