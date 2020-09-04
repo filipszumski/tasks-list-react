@@ -24,7 +24,7 @@ This is to do list application. It allows you to add new tasks, mark them if don
 - You can set added task as done by clicking on green button.
 - You can remove task by clicking on red button.
 - You can mark all tasks as done by clicking on "Ukończ wszystkie" button
-- You can hide done tasks by clicking on "Ukryj ukończone button".
+- You can hide done tasks by clicking on "Ukryj ukończone" button.
 
 ### Sample
 
