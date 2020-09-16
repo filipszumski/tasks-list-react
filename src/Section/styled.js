@@ -1,22 +1,24 @@
-.section {
+import styled from "styled-components";
+
+export const StyledSection = styled.section`
     background-color: white;
     margin: 10px 0px;
-}
+`;
 
-.section__header {
+export const Header = styled.header `
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 20px;
     border-bottom: 3px solid #eee;
-}
+`;
 
-.section__title {
+export const Title = styled.h2`
     margin: 0px;
     font-size: 20px;
-}
+`;
 
-.section__body {
+export const Body = styled.div`
     padding: 20px;
-}
+`;
