@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from "./Header";
 import Form from "./Form";
 import Tasks from "./Tasks";
@@ -9,9 +9,14 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
 import { useTasks } from "./useTasks";
 import { useTheme } from "./useTheme";
+import {useHideDone} from "./useHideDone";
 
 function App() {
-  const [hideDone, setHideDone] = useState(false);
+
+  const [
+    hideDone,
+    toggleHideDone,
+  ] = useHideDone();
 
   const [
     theme,
@@ -25,10 +30,6 @@ function App() {
     removeTask,
     toggleTaskDone
   ] = useTasks();
-
-  const toggleHideDone = () => {
-    setHideDone(hideDone => !hideDone);
-  };
 
   return (
     <ThemeProvider theme={theme}>
