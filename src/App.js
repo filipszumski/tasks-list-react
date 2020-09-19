@@ -8,14 +8,7 @@ import Container from "./Container";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
 import { darkTheme, basicTheme } from "./theme";
-
-const getInitialTasks = () => {
-  const tasksFromLocalStorage = localStorage.getItem("tasks");
-
-  return tasksFromLocalStorage
-    ? JSON.parse(tasksFromLocalStorage)
-    : []
-};
+import { useTasks } from "./useTasks";
 
 const getInitialTheme = () => {
   const themeFromLocalStorage = localStorage.getItem("theme");
@@ -27,13 +20,15 @@ const getInitialTheme = () => {
 
 function App() {
   const [hideDone, setHideDone] = useState(false);
-  const [tasks, setTasks] = useState(getInitialTasks);
   const [theme, setTheme] = useState(getInitialTheme);
 
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  const [
+    tasks,
+    addNewTask,
+    setAllDone,
+    removeTask,
+    toggleTaskDone
+  ] = useTasks();
 
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify(theme))
@@ -46,40 +41,6 @@ function App() {
   const toggleHideDone = () => {
     setHideDone(hideDone => !hideDone);
   };
-
-  const removeTask = (id) => {
-    setTasks(tasks => tasks.filter(task => task.id !== id));
-  };
-
-  const toggleTaskDone = (id) => {
-    setTasks(tasks => tasks.map(task => {
-      if (task.id === id) {
-        return {
-          ...task,
-          done: !task.done,
-        };
-      }
-      return task;
-    }));
-  };
-
-  const setAllDone = () => {
-    setTasks(tasks => tasks.map(task => ({
-      ...task,
-      done: true,
-    })));
-  };
-
-  const addNewTask = (newTaskContent) => {
-    setTasks(tasks => [
-      ...tasks,
-      {
-        id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
-        content: newTaskContent,
-        done: false,
-      }
-    ]);
-  }
 
   return (
     <ThemeProvider theme={theme}>
