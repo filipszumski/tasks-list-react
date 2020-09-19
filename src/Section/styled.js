@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSection = styled.section`
-    background-color: white;
+    background-color: ${({theme}) => theme.colors.sectionBackground};
     margin: 10px 0px;
 `;
 
@@ -11,7 +11,7 @@ export const Header = styled.header `
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 20px;
-    border-bottom: 3px solid #eee;
+    border-bottom: 3px solid ${({theme}) => theme.colors.background};
 `;
 
 export const Title = styled.h2`

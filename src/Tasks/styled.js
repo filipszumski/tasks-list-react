@@ -12,7 +12,7 @@ export const Item = styled.li`
     grid-template-columns: auto 1fr auto;
     grid-gap: 10px;
     align-items: center;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid ${({theme}) => theme.colors.background};
   
     ${({ hidden }) => hidden && css`
         display: none;
@@ -30,31 +30,31 @@ export const Content = styled.span`
 
 export const Button = styled.button`
     border: none;
-    color: white;
+    color: ${({theme}) => theme.colors.buttonInside};
     width: 30px;
     height: 30px;
 
     ${({ done }) => done && css`
-        background-color: green;
+        background-color: ${({theme}) => theme.colors.ckeck};
         transition: background 0.5s;
 
     &:hover {
-        background-color: hsl(120, 100%, 30%);
+        filter: brightness(110%);
     }
     &:active {
-        background-color: hsl(120, 100%, 35%);
+        filter: brightness(120%);
     }
     `}
 
     ${({ remove }) => remove && css`
-        background-color: red;
+        background-color: ${({theme}) => theme.colors.remove};
         transition: background 0.5s;
 
     &:hover {
-        background-color: hsl(0, 100%, 45%);
+        filter: brightness(150%);
     }
     &:active {
-        background-color:  hsl(0, 100%, 40%);
+        filter: brightness(120%);
     }
     `}
 `;

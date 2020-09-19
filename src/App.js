@@ -5,6 +5,9 @@ import Tasks from "./Tasks";
 import Buttons from "./Buttons";
 import Section from "./Section";
 import Container from "./Container";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./GlobalStyle";
+import { darkTheme, basicTheme } from "./theme";
 
 const getInitialTasks = () => {
   const tasksFromLocalStorage = localStorage.getItem("tasks");
@@ -14,13 +17,31 @@ const getInitialTasks = () => {
     : []
 };
 
+const getInitialTheme = () => {
+  const themeFromLocalStorage = localStorage.getItem("theme");
+
+  return themeFromLocalStorage
+    ? JSON.parse(themeFromLocalStorage)
+    : basicTheme
+};
+
 function App() {
   const [hideDone, setHideDone] = useState(false);
   const [tasks, setTasks] = useState(getInitialTasks);
+  const [theme, setTheme] = useState(getInitialTheme);
+
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(theme))
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(theme => theme === basicTheme ? darkTheme : basicTheme)
+  };
 
   const toggleHideDone = () => {
     setHideDone(hideDone => !hideDone);
@@ -61,32 +82,38 @@ function App() {
   }
 
   return (
-    <Container>
-      <Header title="Lista zadań" />
-      <Section
-        title="Dodaj nowe zadanie"
-        body={<Form addNewTask={addNewTask} />}
-      />
-      <Section
-        title="Lista zadań"
-        extraHeaderContent={
-          <Buttons
-            tasks={tasks}
-            hideDone={hideDone}
-            toggleHideDone={toggleHideDone}
-            setAllDone={setAllDone}
-          />
-        }
-        body={
-          <Tasks
-            tasks={tasks}
-            hideDone={hideDone}
-            removeTask={removeTask}
-            toggleTaskDone={toggleTaskDone}
-          />
-        }
-      />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <Header
+          title="Lista zadań"
+          toggleTheme={toggleTheme}
+        />
+        <Section
+          title="Dodaj nowe zadanie"
+          body={<Form addNewTask={addNewTask} />}
+        />
+        <Section
+          title="Lista zadań"
+          extraHeaderContent={
+            <Buttons
+              tasks={tasks}
+              hideDone={hideDone}
+              toggleHideDone={toggleHideDone}
+              setAllDone={setAllDone}
+            />
+          }
+          body={
+            <Tasks
+              tasks={tasks}
+              hideDone={hideDone}
+              removeTask={removeTask}
+              toggleTaskDone={toggleTaskDone}
+            />
+          }
+        />
+      </Container>
+    </ThemeProvider>
   );
 }
 

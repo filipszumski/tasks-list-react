@@ -4,7 +4,7 @@ export const StyledButtons = styled.div`
     display: flex;
     flex-wrap: wrap;
 
-    @media (max-width: 540px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
         flex-basis: 100%;
     }
 `;
@@ -13,21 +13,20 @@ export const StyledButton = styled.button`
     margin-left: 10px;
     background: transparent;
     border: none;
-    color: hsl(221, 79%, 55%);
-    transition: color 0.5s;
+    color: ${({theme}) => theme.colors.button};
 
-    @media (max-width: 540px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
         flex-basis: 100%;
         margin: 20px 0px 0px 0px;
     }
 
     &:hover {
-        color: hsl(221, 79%, 40%);
+        filter: brightness(110%)
     }
     &:active {
-        color: hsl(221, 79%, 30%);
+        filter: brightness(120%)
     }
     &:disabled {
-        color: gray;
+        color: ${({theme}) => theme.colors.disabled};
     }
 `;
