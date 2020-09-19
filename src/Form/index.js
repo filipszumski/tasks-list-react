@@ -18,6 +18,7 @@ const Form = ({ addNewTask }) => {
                 placeholder="Co jest do zrobienia?"
                 value={newTaskContent}
                 onChange={(event) => setNewTaskContent(event.target.value)}
+                required
             />
             <Button>Dodaj zadanie</Button>
         </StyledForm>
