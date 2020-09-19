@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from "./Header";
 import Form from "./Form";
 import Tasks from "./Tasks";
@@ -7,20 +7,16 @@ import Section from "./Section";
 import Container from "./Container";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
-import { darkTheme, basicTheme } from "./theme";
 import { useTasks } from "./useTasks";
-
-const getInitialTheme = () => {
-  const themeFromLocalStorage = localStorage.getItem("theme");
-
-  return themeFromLocalStorage
-    ? JSON.parse(themeFromLocalStorage)
-    : basicTheme
-};
+import { useTheme } from "./useTheme";
 
 function App() {
   const [hideDone, setHideDone] = useState(false);
-  const [theme, setTheme] = useState(getInitialTheme);
+
+  const [
+    theme,
+    toggleTheme,
+  ] = useTheme();
 
   const [
     tasks,
@@ -29,14 +25,6 @@ function App() {
     removeTask,
     toggleTaskDone
   ] = useTasks();
-
-  useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(theme))
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme(theme => theme === basicTheme ? darkTheme : basicTheme)
-  };
 
   const toggleHideDone = () => {
     setHideDone(hideDone => !hideDone);
