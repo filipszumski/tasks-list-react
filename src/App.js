@@ -14,11 +14,6 @@ import {useHideDone} from "./useHideDone";
 function App() {
 
   const [
-    hideDone,
-    toggleHideDone,
-  ] = useHideDone();
-
-  const [
     theme,
     toggleTheme,
   ] = useTheme();
@@ -30,6 +25,11 @@ function App() {
     removeTask,
     toggleTaskDone
   ] = useTasks();
+
+const [
+  hideDone,
+  toggleHideDone,
+] = useHideDone(tasks);
 
   return (
     <ThemeProvider theme={theme}>

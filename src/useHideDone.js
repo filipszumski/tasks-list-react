@@ -1,10 +1,15 @@
 import {useState} from "react";
 
-export const useHideDone = () => {
+export const useHideDone = (tasks) => {
     const [hideDone, setHideDone] = useState(false);
+    const isAnyTaskDone = tasks.some((task) => task.done);
 
     const toggleHideDone = () => {
-        setHideDone(hideDone => !hideDone);
+
+        if(isAnyTaskDone === true) {
+           return setHideDone(hideDone => !hideDone);
+        }
+        return null;
     };
 
     return [
