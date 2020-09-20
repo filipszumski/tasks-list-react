@@ -1,32 +1,33 @@
 import styled from "styled-components";
 
-export const StyledButtons = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
         flex-basis: 100%;
     }
 `;
 
-export const StyledButton = styled.button`
+export const Button = styled.button`
     margin-left: 10px;
     background: transparent;
     border: none;
-    color: ${({theme}) => theme.colors.button};
+    color: ${({ theme }) => theme.colors.button};
+    transition: filter 0.3s;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
         flex-basis: 100%;
         margin: 20px 0px 0px 0px;
     }
 
     &:hover {
-        filter: brightness(110%)
+        filter: brightness(115%)
     }
     &:active {
-        filter: brightness(120%)
+        filter: brightness(130%)
     }
     &:disabled {
-        color: ${({theme}) => theme.colors.disabled};
+        color: ${({ theme }) => theme.colors.disabled};
     }
 `;
