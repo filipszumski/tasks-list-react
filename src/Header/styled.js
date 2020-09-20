@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
+export const Wrapper = styled.header`
     display: grid;
     grid-template-columns: 1fr auto;
 `;
@@ -12,7 +12,7 @@ export const Button = styled.button`
     border: none;
     background: ${({theme}) => theme.colors.sectionBackground};
     color: ${({theme}) => theme.colors.button};
-    transition: background 0.5s, transform 0.5s;
+    transition: filter 0.5s, transform 0.5s;
 
     &:hover {
         filter: brightness(110%);

@@ -1,12 +1,12 @@
 import React from "react";
-import { StyledHeader, Button } from "./styled";
+import { Wrapper, Button } from "./styled";
 
 
 const Header = ({ title, toggleTheme }) => (
-    <StyledHeader>
+    <Wrapper>
         <h1>{title}</h1>
         <Button onClick={() => toggleTheme()}>Zmień tło</Button>
-    </StyledHeader>
+    </Wrapper>
 );
 
 export default Header;
