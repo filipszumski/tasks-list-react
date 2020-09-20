@@ -24,14 +24,14 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.colors.buttonInside};
     border: none;
     border-radius: 5px;
-    transition: background 0.5s, transform 0.5s;
+    transition: filter 0.5s, transform 0.5s;
 
     &:hover {
-        filter: brightness(110%);
+        filter: brightness(115%);
         transform: scale(1.05);
     }
     &:active {
-        filter: brightness(110%);
+        filter: brightness(130%);
         transform: scale(1.05);
     }
 `;
