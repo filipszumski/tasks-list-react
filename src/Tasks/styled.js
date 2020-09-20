@@ -36,25 +36,25 @@ export const Button = styled.button`
 
     ${({ done }) => done && css`
         background-color: ${({theme}) => theme.colors.ckeck};
-        transition: background 0.5s;
+        transition: filter 0.5s;
 
     &:hover {
-        filter: brightness(110%);
+        filter: brightness(115%);
     }
     &:active {
-        filter: brightness(120%);
+        filter: brightness(130%);
     }
     `}
 
     ${({ remove }) => remove && css`
         background-color: ${({theme}) => theme.colors.remove};
-        transition: background 0.5s;
+        transition: filter 0.5s;
 
     &:hover {
-        filter: brightness(150%);
+        filter: brightness(115%);
     }
     &:active {
-        filter: brightness(120%);
+        filter: brightness(130%);
     }
     `}
 `;
