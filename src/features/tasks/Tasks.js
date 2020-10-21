@@ -1,15 +1,14 @@
 import React from 'react';
 import Header from "../../common/Header";
 import Form from "./Form";
-import TasksList from "./TasksList"; 
+import TasksList from "./TasksList";
 import Buttons from "./Buttons";
 import Section from "../../common/Section";
 import Container from "../../common/Container";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../../GlobalStyle";
-import { useTasks } from "../../useTasks";
 import { useTheme } from "../../useTheme";
-import {useHideDone} from "../../useHideDone";
+
 
 function Tasks() {
 
@@ -17,19 +16,6 @@ function Tasks() {
     theme,
     toggleTheme,
   ] = useTheme();
-
-  const [
-    tasks,
-    addNewTask,
-    setAllDone,
-    removeTask,
-    toggleTaskDone
-  ] = useTasks();
-
-const [
-  hideDone,
-  toggleHideDone,
-] = useHideDone(tasks);
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,26 +27,12 @@ const [
         />
         <Section
           title="Dodaj nowe zadanie"
-          body={<Form addNewTask={addNewTask} />}
+          body={<Form />}
         />
         <Section
           title="Lista zadań"
-          extraHeaderContent={
-            <Buttons
-              tasks={tasks}
-              hideDone={hideDone}
-              toggleHideDone={toggleHideDone}
-              setAllDone={setAllDone}
-            />
-          }
-          body={
-            <TasksList
-              tasks={tasks}
-              hideDone={hideDone}
-              removeTask={removeTask}
-              toggleTaskDone={toggleTaskDone}
-            />
-          }
+          extraHeaderContent={<Buttons />}
+          body={<TasksList />}
         />
       </Container>
     </ThemeProvider>
