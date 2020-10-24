@@ -26,8 +26,12 @@ const tasksSlice = createSlice({
             tasks.splice(index, 1);
         },
         toggleHideDone: (state) => {
-            state.hideDone = !state.hideDone;
-        }
+            const isAnyTaskDone = state.tasks.some(task => task.done)
+
+            if (isAnyTaskDone) {
+                state.hideDone = !state.hideDone;
+            }
+        },
     }
 });
 
