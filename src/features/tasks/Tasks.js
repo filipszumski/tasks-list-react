@@ -9,7 +9,6 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../../GlobalStyle";
 import { useTheme } from "../../useTheme";
 
-
 function Tasks() {
 
   const [
