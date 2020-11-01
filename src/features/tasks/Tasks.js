@@ -2,7 +2,8 @@ import React from 'react';
 import Header from "../../common/Header";
 import Form from "./Form";
 import TasksList from "./TasksList";
-import Buttons from "./Buttons";
+import ListButtons from "./ListButtons";
+import FormButtons from "./FormButtons";
 import Section from "../../common/Section";
 import Container from "../../common/Container";
 import { ThemeProvider } from "styled-components";
@@ -26,11 +27,12 @@ function Tasks() {
         />
         <Section
           title="Dodaj nowe zadanie"
+          extraHeaderContent={<FormButtons />}
           body={<Form />}
         />
         <Section
           title="Lista zadań"
-          extraHeaderContent={<Buttons />}
+          extraHeaderContent={<ListButtons />}
           body={<TasksList />}
         />
       </Container>

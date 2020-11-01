@@ -4,7 +4,7 @@ import { selectHideDone, selectAreTasksEmpty, selectIsEveryTaskDone } from "../t
 import { Wrapper, Button } from "./styled";
 import { toggleHideDone, setAllDone } from "../tasksSlice";
 
-const Buttons = () => {
+const ListButtons = () => {
     const dispatch = useDispatch();
     const hideDone = useSelector(selectHideDone);
     const areTasksEmpty = useSelector(selectAreTasksEmpty);
@@ -32,4 +32,4 @@ const Buttons = () => {
     )
 };
 
-export default Buttons;
+export default ListButtons;
