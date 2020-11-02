@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getTasksFromLocaleStorage } from "./tasksLocaleStorage";
 
 const tasksSlice = createSlice({
     name: "tasks",
     initialState: {
-        tasks: [],
+        tasks: getTasksFromLocaleStorage(),
         hideDone: false,
+        exampleTasksFetchingState: "ready",
     },
     reducers: {
         addNewTask: ({ tasks }, { payload: task }) => {
@@ -33,8 +35,11 @@ const tasksSlice = createSlice({
             }
         },
         fetchExampleTasks: () => { },
-        setExampleTasks: (state, {payload: exampleTasks}) => {
+        setExampleTasks: (state, { payload: exampleTasks }) => {
             state.tasks = exampleTasks;
+        },
+        setExampleTasksFetchingState: (state, { payload: value }) => {
+            state.exampleTasksFetchingState = value;
         },
     }
 });
@@ -47,11 +52,12 @@ export const {
     toggleHideDone,
     fetchExampleTasks,
     setExampleTasks,
+    setExampleTasksFetchingState,
 } = tasksSlice.actions;
 
 const selectTasksState = state => state.tasks;
-
 export const selectTasks = state => selectTasksState(state).tasks;
+export const selectExampleTasksFetchingState = state => selectTasksState(state).exampleTasksFetchingState;
 export const selectHideDone = state => selectTasksState(state).hideDone;
 export const selectAreTasksEmpty = state => selectTasks(state).length === 0;
 export const selectIsEveryTaskDone = state => selectTasks(state).every(task => task.done)

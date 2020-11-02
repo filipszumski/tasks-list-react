@@ -10,6 +10,7 @@ export const basicTheme = {
         ckeck: "green",
         buttonInside: "white",
         remove: "#E81111",
+        error: "crimson",
     },
     breakpoints: {
         mobile: 540,
@@ -32,5 +33,6 @@ export const darkTheme = {
         ckeck: "green",
         buttonInside: "white",
         remove: "#E81111",
+        error: "crimson",
     },
 };

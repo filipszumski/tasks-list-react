@@ -1,19 +1,31 @@
-import { takeLatest, put, call } from "redux-saga/effects"
+import { takeLatest, put, call, takeEvery, select, delay, all } from "redux-saga/effects"
 import { getExampleTasks } from "./getExampleTasks";
-import { fetchExampleTasks, setExampleTasks } from "./tasksSlice";
+import { saveTasksInLocaleStorage } from "./tasksLocaleStorage";
+import { fetchExampleTasks, selectTasks, setExampleTasksFetchingState, setExampleTasks } from "./tasksSlice";
 
 
 function* fetchExampleTasksHandler() {
     try {
-        const exampleTasks = yield call(getExampleTasks)
-        console.log(exampleTasks);
-        yield put(setExampleTasks(exampleTasks))
+        const exampleTasks = yield call(getExampleTasks);
+        yield put(setExampleTasksFetchingState("loading"));
+        yield delay(1000);
+        yield all([
+            put(setExampleTasks(exampleTasks)),
+            put(setExampleTasksFetchingState("ready")),
+        ]);
     } catch (error) {
-        console.error(error);
-        call(alert, "Coś poszło nie tak!")
+        yield put(setExampleTasksFetchingState("loading"));
+        yield delay(1000);
+        yield put(setExampleTasksFetchingState("fail"));
     }
-}
+};
+
+function* saveTasksInLocaleStorageHandler() {
+    const tasks = yield select(selectTasks);
+    yield call(saveTasksInLocaleStorage, tasks);
+};
 
 export default function* tasksSaga() {
     yield takeLatest(fetchExampleTasks.type, fetchExampleTasksHandler);
-}
+    yield takeEvery("*", saveTasksInLocaleStorageHandler);
+};
