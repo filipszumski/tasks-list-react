@@ -6,24 +6,13 @@ import ListButtons from "./ListButtons";
 import FormButtons from "./FormButtons";
 import Section from "../../common/Section";
 import Container from "../../common/Container";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "../../GlobalStyle";
-import { useTheme } from "../../useTheme";
 
 function Tasks() {
 
-  const [
-    theme,
-    toggleTheme,
-  ] = useTheme();
-
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
       <Container>
         <Header
           title="Lista zadań"
-          toggleTheme={toggleTheme}
         />
         <Section
           title="Dodaj nowe zadanie"
@@ -36,7 +25,6 @@ function Tasks() {
           body={<TasksList />}
         />
       </Container>
-    </ThemeProvider>
   );
 }
 
