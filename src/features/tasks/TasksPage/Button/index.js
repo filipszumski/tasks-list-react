@@ -1,14 +1,5 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-        flex-basis: 100%;
-    }
-`;
-
 export const Button = styled.button`
     margin-left: 10px;
     background: transparent;
@@ -16,9 +7,9 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.colors.button};
     transition: filter 0.3s;
 
-    ${({errorState}) => errorState && css`
-        color: ${({theme}) => theme.colors.error};
-    `}
+    ${({ error }) => error && css`
+        color: crimson;
+    `};
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
         flex-basis: 100%;
@@ -26,10 +17,10 @@ export const Button = styled.button`
     }
 
     &:hover {
-        filter: brightness(115%)
+        filter: brightness(115%);
     }
     &:active {
-        filter: brightness(130%)
+        filter: brightness(130%);
     }
     &:disabled {
         color: ${({ theme }) => theme.colors.disabled};

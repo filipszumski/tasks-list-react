@@ -1,4 +1,3 @@
-
 export const basicTheme = {
     colors: {
         background: "#eee",
@@ -18,7 +17,7 @@ export const basicTheme = {
     fonts: {
         primaryFont: "'Montserrat', sans-serif",
     },
-}
+};
 
 export const darkTheme = {
     ...basicTheme,

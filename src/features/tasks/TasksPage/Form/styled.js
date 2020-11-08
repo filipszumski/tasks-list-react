@@ -6,16 +6,8 @@ export const StyledForm = styled.form`
     grid-gap: 10px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
-`;
-
-export const Input = styled.input`
-    padding: 10px;
-    border: 1px solid ${({ theme }) => theme.colors.frame};
-    border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
 `;
 
 export const Button = styled.button`

@@ -14,8 +14,8 @@ export const Button = styled.button`
     margin-left: 12px;
     border-radius: 5px;
     border: none;
-    background: ${({theme}) => theme.colors.sectionBackground};
-    color: ${({theme}) => theme.colors.button};
+    background: ${({ theme }) => theme.colors.sectionBackground};
+    color: ${({ theme }) => theme.colors.button};
 
     &:hover {
         filter: brightness(110%);
@@ -37,7 +37,15 @@ export const StyledItem = styled.li`
 padding: 20px 10px 20px 10px;
 `;
 
-export const StyledLink = styled(NavLink)`
+export const StyledNavLink = styled(NavLink).attrs(() => ({
+    activeClassName: "active"
+}))`
 color: ${({ theme }) => theme.colors.buttonInside};
 text-decoration: none;
+&.active {
+    font-weight: bold;
+};
+&:hover {
+    border-bottom: 1px solid;
+}
 `;

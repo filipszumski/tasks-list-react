@@ -1,8 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectHideDone, selectAreTasksEmpty, selectIsEveryTaskDone } from "../tasksSlice";
-import { Wrapper, Button } from "./styled";
-import { toggleHideDone, setAllDone } from "../tasksSlice";
+import {
+    selectHideDone,
+    selectAreTasksEmpty,
+    selectIsEveryTaskDone,
+    toggleHideDone,
+    setAllDone
+} from "../../tasksSlice";
+import { Wrapper } from "../Wrapper";
+import { Button } from "../Button";
 
 const ListButtons = () => {
     const dispatch = useDispatch();
@@ -28,7 +34,6 @@ const ListButtons = () => {
                 </>
             )}
         </Wrapper >
-
     )
 };
 

@@ -1,49 +1,41 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import {Button} from "./syled";
-import Tasks from "./features/tasks/Tasks";
-import Author from "./features/author/Author";
-import { StyledNav, StyledList, StyledItem, StyledLink } from "./syled";
-import {useTheme} from "./useTheme";
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "./features/theme/GlobalStyle";
+import TasksPage from "./features/tasks/TasksPage";
+import AuthorPage from "./features/author";
+import TaskPage from "./features/tasks/TaskPage";
+import Navigation from "./common/Navigation";
+import { toTask, toAuthor, toTasks } from "./routes";
+import { useSelector } from "react-redux";
+import { selectTheme } from "./features/theme/themeSlice";
+import { basicTheme, darkTheme } from "./features/theme/theme";
 
 const App = () => {
-    const [
-        theme,
-        toggleTheme,
-    ] = useTheme();
+    const theme = useSelector(selectTheme);
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme === "jasny" ? basicTheme : darkTheme}>
             <GlobalStyle />
             <BrowserRouter basename="/tasks-list-react">
-                <StyledNav>
-                <Button onClick={() => toggleTheme()}>Zmień tło</Button>
-                    <StyledList>
-                        <StyledItem>
-                            <StyledLink to="/zadania">Lista zadań</StyledLink>
-                        </StyledItem>
-                        <StyledItem>
-                            <StyledLink to="/autor">O autorze</StyledLink>
-                        </StyledItem>
-                    </StyledList>
-                </StyledNav>
+                <Navigation />
                 <Switch>
-                    <Route path="/zadania">
-                        <Tasks />
+                    <Route path={toTask()}>
+                        <TaskPage />
                     </Route>
-                    <Route path="/autor">
-                        <Author />
+                    <Route path={toTasks()}>
+                        <TasksPage />
                     </Route>
-                    <Route path="/">
-                        <Redirect to="/zadania" />
+                    <Route path={toAuthor()}>
+                        <AuthorPage />
+                    </Route>
+                    <Route>
+                        <Redirect to={toTasks()} />
                     </Route>
                 </Switch>
             </BrowserRouter>
         </ThemeProvider>
     )
-
 };
 
 export default App;

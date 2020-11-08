@@ -14,7 +14,7 @@ export const useTheme = () => {
 
     useEffect(() => {
         localStorage.setItem("theme", JSON.stringify(theme))
-    }, [theme])
+    }, [theme]);
 
     const toggleTheme = () => {
         setTheme(theme => theme === basicTheme ? darkTheme : basicTheme)

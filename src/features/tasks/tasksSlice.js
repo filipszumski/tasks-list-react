@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTasksFromLocaleStorage } from "./tasksLocaleStorage";
+import { getDataFromLocaleStorage } from "../dataFromLocaleStorage";
 
 const tasksSlice = createSlice({
     name: "tasks",
     initialState: {
-        tasks: getTasksFromLocaleStorage(),
+        tasks: getDataFromLocaleStorage("tasks", []),
         hideDone: false,
-        exampleTasksFetchingState: "ready",
+        loading: false,
+        error: false,
     },
     reducers: {
         addNewTask: ({ tasks }, { payload: task }) => {
@@ -23,24 +24,28 @@ const tasksSlice = createSlice({
             tasks[index].done = !tasks[index].done;
         },
         removeTask: ({ tasks }, { payload: taskId }) => {
-            const index = tasks.findIndex(task => task.id === taskId)
+            const index = tasks.findIndex(task => task.id === taskId);
 
             tasks.splice(index, 1);
         },
         toggleHideDone: (state) => {
-            const isAnyTaskDone = state.tasks.some(task => task.done)
+            const isAnyTaskDone = state.tasks.some(task => task.done);
 
             if (isAnyTaskDone) {
                 state.hideDone = !state.hideDone;
             }
         },
-        fetchExampleTasks: () => { },
-        setExampleTasks: (state, { payload: exampleTasks }) => {
+        fetchExampleTasks: (state) => {
+            state.loading = true;
+        },
+        fetchExampleTasksSuccess: (state, { payload: exampleTasks }) => {
             state.tasks = exampleTasks;
+            state.loading = false;
         },
-        setExampleTasksFetchingState: (state, { payload: value }) => {
-            state.exampleTasksFetchingState = value;
-        },
+        fetchExampleTasksError: (state) => {
+            state.loading = false;
+            state.error = true;
+        }
     }
 });
 
@@ -51,15 +56,25 @@ export const {
     removeTask,
     toggleHideDone,
     fetchExampleTasks,
-    setExampleTasks,
-    setExampleTasksFetchingState,
+    fetchExampleTasksSuccess,
+    fetchExampleTasksError,
 } = tasksSlice.actions;
 
 const selectTasksState = state => state.tasks;
+
 export const selectTasks = state => selectTasksState(state).tasks;
-export const selectExampleTasksFetchingState = state => selectTasksState(state).exampleTasksFetchingState;
+export const selectLoading = state => selectTasksState(state).loading;
+export const selectError = state => selectTasksState(state).error;
 export const selectHideDone = state => selectTasksState(state).hideDone;
 export const selectAreTasksEmpty = state => selectTasks(state).length === 0;
-export const selectIsEveryTaskDone = state => selectTasks(state).every(task => task.done)
+export const selectIsEveryTaskDone = state => selectTasks(state).every(task => task.done);
+export const getTaskById = (state, id) => selectTasks(state).find(task => task.id === id);
+export const selectTasksByQuery = (state, query) => {
+    const tasks = selectTasks(state);
+
+    if (!query || query.trim() === "") {
+        return tasks;
+    } return tasks.filter(task => task.content.toUpperCase().includes(query.toUpperCase()));
+};
 
 export default tasksSlice.reducer;
