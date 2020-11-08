@@ -2,7 +2,6 @@ import React from "react";
 import { Wrapper, Header, Title, Body } from "./styled";
 
 const Section = ({ title, extraHeaderContent, body }) => (
-
     <Wrapper>
         <Header>
             <Title>
