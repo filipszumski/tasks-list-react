@@ -1,7 +1,7 @@
 # TASKS LIST
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Link: filipszumski.github.io/tasks-list-react/
+Link: https://filipszumski.github.io/tasks-list-react/zadania
 
 ## Description
 
