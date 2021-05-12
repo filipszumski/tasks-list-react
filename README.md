@@ -1,35 +1,47 @@
 # TASKS LIST
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Link: https://filipszumski.github.io/tasks-list/
+Link: filipszumski.github.io/tasks-list-react/
 
 ## Description
 
-This is to do list application. It allows you to add new tasks, mark them if done and remove tasks from list.
+This is to do list application with theme toggler. It allows you to manage your tasks by adding new tasks, marking if done, removing them. You can also check task detail by clicking on it. Tasks will be saved in local storage memory of your browser.
 
-### Technologies used
+## Technologies used
 
 - HTML
-- CSS 
-- JavaScript
-- BEM
+- CSS
+- JavaScript ES6+
 - React
+- Redux with react-redux
+- React Saga
+- React Router
+- Styled Components
 - create-react-app
-- Webpack
-- Babel
+- npm 
+- localeStorage
+- axios
 
-### What it does
+## Features
 
-- You can add new tasks by wrinting text in input and comfirming it by clicking "Dodaj zadanie" button. After you add new tasks it automatically clears input and sets focus on input. You can't add empty content
-- You can set added task as done by clicking on green button.
-- You can remove task by clicking on red button.
-- You can mark all tasks as done by clicking on "Ukończ wszystkie" button
-- You can hide done tasks by clicking on "Ukryj ukończone" button.
+- Adding tasks
+- Removing tasks
+- Marking tasks if done
+- Marking all tasks done
+- Hide done tasks
+- Filter tasks
+- Viewing task details
+- Saving tasks in LocaleStorage
+- Changing Theme
+- Fetching pre-defined example tasks
 
-### Sample
+## My other projects
 
-![GIF Instruction](https://github.com/filipszumski/tasks-list/blob/master/images/instruction.gif?raw=true)
-
+- [Tasks List](https://filipszumski.github.io/tasks-list/)
+- [Currency Converter](https://filipszumski.github.io/currency-converter/)
+- [Currency Converter And Data](https://filipszumski.github.io/currency-converter-and-data-react/)
+- [Crowdfunding Product Page](https://filipszumski.github.io/crowdfunding-product-page/)
+- [REST Countries API With Theme Switcher](https://filipszumski.github.io/rest-countries-api-with-color-theme-switcher/)
 ## Available Scripts
 
 In the project directory, you can run:
