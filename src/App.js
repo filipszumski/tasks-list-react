@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./features/theme/GlobalStyle";
 import TasksPage from "./features/tasks/TasksPage";
@@ -17,7 +17,7 @@ const App = () => {
     return (
         <ThemeProvider theme={theme === "jasny" ? basicTheme : darkTheme}>
             <GlobalStyle />
-            <BrowserRouter basename="/tasks-list-react">
+            <HashRouter>
                 <Navigation />
                 <Switch>
                     <Route path={toTask()}>
@@ -33,7 +33,7 @@ const App = () => {
                         <Redirect to={toTasks()} />
                     </Route>
                 </Switch>
-            </BrowserRouter>
+            </HashRouter>
         </ThemeProvider>
     )
 };
